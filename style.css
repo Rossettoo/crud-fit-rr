@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f0f7f2;
+  color: #333;
+}
+h1 {
+  text-align: center;
+  color: #2d6a4f;
+}
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+.checkboxes label {
+  display: inline-block;
+  margin-right: 15px;
+}
+button {
+  background-color: #40916c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #2d6a4f;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+.success {
+  color: green;
+  margin-top: 10px;
+}
