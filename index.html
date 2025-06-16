@@ -1,0 +1,234 @@
+[Versão com duas páginas: index.html e escopos.html]
+
+---
+
+📄 **index.html** (Página de capa)
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lavanderia Sustentável</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0fdf4;
+      color: #2e7d32;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 4em 2em;
+      text-align: center;
+      background-image: linear-gradient(rgba(46,125,50,0.9), rgba(46,125,50,0.9)), url('https://images.unsplash.com/photo-1523978591478-c753949ff840');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+
+    header p {
+      font-size: 1.3em;
+    }
+
+    main {
+      text-align: center;
+      padding: 4em 2em;
+    }
+
+    .btn {
+      padding: 1em 2em;
+      font-size: 1.2em;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lavanderia Sustentável</h1>
+    <p>Transformando hábitos urbanos por meio da ODS 11</p>
+  </header>
+  <main>
+    <h2>Bem-vindo à Lavanderia Sustentável</h2>
+    <p>Uma plataforma interativa para inspirar soluções sustentáveis nas cidades.</p>
+    <a href="escopos.html" class="btn">Acessar Plataforma</a>
+  </main>
+</body>
+</html>
+```
+
+---
+
+📄 **escopos.html** (Página com módulos e painel de ideias)
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escopos - Lavanderia Sustentável</title>
+  <style>
+    :root {
+      --verde-escuro: #2e7d32;
+      --verde-claro: #a5d6a7;
+      --branco: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--branco);
+      color: var(--verde-escuro);
+    }
+
+    header {
+      background-color: var(--verde-escuro);
+      color: var(--branco);
+      padding: 2em 1em;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    section {
+      padding: 2em;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .module {
+      background-color: var(--verde-claro);
+      padding: 2em;
+      margin-bottom: 2em;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .module:hover {
+      transform: scale(1.01);
+    }
+
+    .button {
+      background-color: var(--verde-escuro);
+      color: var(--branco);
+      border: none;
+      padding: 0.7em 1.2em;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .idea {
+      padding: 1em 1.5em;
+      margin: 1em 0;
+      background-color: #e8f5e9;
+      border-left: 6px solid var(--verde-escuro);
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lavanderia Sustentável - Escopos</h1>
+  </header>
+
+  <section class="module">
+    <h2>Lavanderia Lúdica</h2>
+    <p>Escolha um comportamento prejudicial e clique para "lavar":</p>
+    <select id="problema">
+      <option value="descarte">Descarte inadequado de resíduos</option>
+      <option value="carros">Uso excessivo de automóveis</option>
+      <option value="energia">Gasto excessivo de energia elétrica</option>
+    </select>
+    <button class="button" onclick="lavarRoupa()">Lavar</button>
+    <p id="solucao"></p>
+  </section>
+
+  <section class="module">
+    <h2>Gerador de Ideias</h2>
+    <textarea id="novaIdeia" placeholder="Digite sua ideia para melhorar a cidade..."></textarea>
+    <button class="button" onclick="enviarIdeia()">Enviar Ideia</button>
+  </section>
+
+  <section class="module">
+    <h2>Painel de Ideias</h2>
+    <div id="painel"></div>
+  </section>
+
+  <script>
+    const solucoes = {
+      descarte: "Separe e recicle o lixo. Participe de programas de coleta seletiva.",
+      carros: "Opte por transporte coletivo, bicicletas ou caminhadas.",
+      energia: "Desligue aparelhos que não estão em uso e use lâmpadas LED."
+    };
+
+    function lavarRoupa() {
+      const problema = document.getElementById('problema').value;
+      document.getElementById('solucao').innerText = 'Solução: ' + solucoes[problema];
+    }
+
+    const ideias = [];
+
+    function enviarIdeia() {
+      const ideiaTexto = document.getElementById('novaIdeia').value;
+      if (ideiaTexto.trim()) {
+        ideias.push({ texto: ideiaTexto, curtidas: 0 });
+        atualizarPainel();
+        document.getElementById('novaIdeia').value = '';
+      }
+    }
+
+    function curtirIdeia(index) {
+      ideias[index].curtidas++;
+      atualizarPainel();
+    }
+
+    function atualizarPainel() {
+      const painel = document.getElementById('painel');
+      painel.innerHTML = '';
+      ideias.sort((a, b) => b.curtidas - a.curtidas);
+      ideias.forEach((ideia, index) => {
+        const div = document.createElement('div');
+        div.className = 'idea';
+        div.innerHTML = `
+          <strong>Ideia ${index + 1}</strong>
+          ${ideia.texto}<br>
+          <button class='button' onclick='curtirIdeia(${index})'>Curtir (${ideia.curtidas})</button>
+        `;
+        painel.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+
